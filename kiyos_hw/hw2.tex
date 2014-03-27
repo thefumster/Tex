@@ -1,0 +1,90 @@
+\documentclass[letterpage]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+  \textbf{Homework Set 2}\\
+
+1)Symmetry of Green functions
+Jackson 1.14\\
+
+2)Inside a conducting sphere
+Jackson 2.2\\
+
+3)Line charge
+Jackson 2.3.\\
+
+4)Force and work
+Jackson 2.5\\
+
+1)
+\begin{align*}
+  &\int_v d^3 x (\phi \nabla^2 \psi-\psi \nabla^2 \phi) = \oint_s 
+  \left(\phi \frac{\partial \psi}{\partial n}-\psi 
+  \frac{\partial \phi}{\partial n} \right) dA\\
+  \text{Let } &\phi = G(\textbf{x}, \textbf{y}) \qquad 
+  \psi = G(\textbf{x}',\textbf{y}) \qquad {\nabla_y}^2 G(\textbf{z},\textbf{y})
+  = -4\pi\delta (\textbf{y}-\textbf{z)}\\
+  &\int_v d^3y \left(G(\textbf{x},\textbf{y}) {\nabla_y}^2 
+  G (\textbf{x}',\textbf{y})
+  - G(\textbf{x}',\textbf{y}){\nabla_y}^2 G(\textbf{x},\textbf{y})\right)\\
+  &= \oint_s \left(G(\textbf{x},\textbf{y}) 
+  \frac{\partial G (\textbf{x},\textbf{y})}{\partial n} 
+  - G (\textbf{x}',\textbf{y})
+  \frac{\partial G (\textbf{x},\textbf{y})}{\partial n} \right)d^2y\\
+  &\Rightarrow \int_v d^3y \left(-4\pi G(x,y) \delta (y-x')
+  + 4\pi G(x',y) \delta (y-x)\right)\\
+  &= -4\pi G(x,x') + 4\pi G(x',x)\\
+  &\therefore -4\pi \left(G(\textbf{x},\textbf{x}')
+  -G(\textbf{x}',\textbf{x})\right)
+  = \oint_s \left(G (\textbf{x},\textbf{y}) 
+  \frac{\partial G (\textbf{x}',\textbf{y})}{\partial n}
+  - G (\textbf{x}',\textbf{y}) 
+  \frac{\partial G (\textbf{x},\textbf{y})}{\partial n}\right)d^2y
+\end{align*}
+\noindent
+(a)Dirichlet B.C.\\
+\begin{align*}
+  &\text{We choose }G(\textbf{x},\textbf{y}) = G (\textbf{x}', \textbf{y})=O
+  \text{ for any point }\textbf{y} \text{ on the surface.}\\
+  &\text{Then, we immediately see } -4\pi \left(G(\textbf{x},\textbf{x}')
+  - G(\textbf{x}',\textbf{x})\right)=0\\
+  &\therefore G(\textbf{x},\textbf{x}') = G(\textbf{x}',\textbf{x})
+\end{align*}
+\noindent
+(b) Neumann B.C.
+\begin{equation*}
+  \frac{\partial G_N}{\partial n} = -\frac{4\pi}{S}
+\end{equation*}
+Then, we have
+\begin{equation*}
+  -4\pi \left(G_N(\textbf{x},\textbf{x}')-G_N(\textbf{x}',\textbf{x})\right)
+  = -\frac{4\pi}{S} \oint_s \left(G_N(\textbf{x},\textbf{y}) - G_N(\textbf{x}',
+  \textbf{y})\right)d^2y
+\end{equation*}
+\begin{equation*}
+  \text{,which is not zero unless } G_N(\textbf{x},\textbf{y}) 
+  =G_N(\textbf{x}',\textbf{y}) \text{ over the surface.}
+\end{equation*}
+Then we get
+\begin{align*}
+  &-4\pi G_N(\textbf{x},\textbf{x}') + \frac{4\pi}{S} \oint_s 
+  G_N (\textbf{x},\textbf{y})da_y = -4\pi G_N (\textbf{x}',\textbf{x})
+  + \frac{4\pi}{S} \oint_s G_N(\textbf{x}',\textbf{y})da_y\\
+  &\Rightarrow G_N (\textbf{x},\textbf{x}')-F(\textbf{x})
+  = G_N(\textbf{x}',\textbf{x})-F(\textbf{x}')\\
+  \\  
+  &\text{If we let } U(\textbf{x},\textbf{x}') = G_N (\textbf{x},\textbf{x}')
+  -F(\textbf{x}),\text{then the right hand side is equal to } U(\textbf{x}',\textbf{x})\\
+  &\Rightarrow U(\textbf{x},\textbf{x}')=U(\textbf{x}',\textbf{x})
+\end{align*}
+\noindent
+(c)In general,
+\begin{equation*}
+  \phi(\textbf{x}) = \frac{1}{4\pi \varepsilon_0} \int_v d^3 x' 
+  G(x,x')\rho(x') - \frac{1}{4\pi} \int_s dA'
+  \left(\phi(x') \frac{\partial G(x,x')}{\partial n'}
+  - G(x,x') \frac{\partial \phi}{\partial n'}\right)
+  
+\end{equation*}
+\end{document}

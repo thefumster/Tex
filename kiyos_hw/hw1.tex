@@ -1,0 +1,363 @@
+\documentclass[letterpage]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}\noindent
+1) \textbf{Dimensionally regularized Green function}\\
+The key formula
+\begin{equation}
+  \nabla^2 \frac{1}{|\mathbf{x} - \mathbf{x'}|} = -4\pi \,\delta^3 (\mathbf{x} - 
+  \mathbf{x'})
+\end{equation}
+is mathematically tricky to prove because of the singularity at the origin.
+Various ways to soften that singularity to regularize the mathematics are
+employed. Prove this formula using the form
+\begin{equation}
+  G(\mathbf{x}-\mathbf{x'}) = \lim_{\eta \to 1^-} \frac{1}{|\mathbf{x}-
+  \mathbf{x'}|^\eta},
+\end{equation}
+with $\eta$ approaching unity from below.\\
+
+\noindent
+2)\textbf{Potential energy of a spherical ball}\\
+a)Use Gauss' Law to get the electric field inside and outside a spherical
+ball of charge $Q$ and radius $R$, with a uniform charge density.\\
+b)Calculate the potential energy that is needed to assemble this configuration
+by building up the ball bringing infinitesimal spherical shells in from 
+$r = \infty$.\\
+c)Verify that this potential energy is equal to
+\begin{equation}
+  W = \frac{\epsilon_0}{2} \int d^3xE^2(x)
+\end{equation}\\
+
+\noindent
+3)\textbf{Neutral Hydrogen}\\
+Jackson 1.5. Please explicitly verify that the total charge is zero.\\
+
+\noindent
+4) \textbf{Capacitance}\\
+Jackson 1.7. You do not need to estimate the gauges of wires required.
+It would be good to review the formulas relating to capacitance that were
+covered in your introductory physics course.
+
+\newpage
+\noindent
+1)
+\begin{align*}
+  \nabla^2 \frac{1}{|\mathbf{x} - \mathbf{x'}|} &= -4\pi \,\delta^3 (\mathbf{x} - 
+  \mathbf{x'})\\
+  G(\mathbf{x}-\mathbf{x'}) &= \lim_{\eta \to 1^-} \frac{1}{|\mathbf{x}-
+  \mathbf{x'}|^\eta}
+\end{align*}
+In spherical coordinates, taking $\mathbf{x'} = 0$,
+\begin{equation*}
+  G(\mathbf{x}) = \lim_{\eta \to 1^-} \frac{1}{r^\eta}
+\end{equation*}
+\begin{align*}
+  \nabla^2 G(\mathbf{x}) &= \lim_{\eta \to 1^-} \nabla^2 \frac{1}{r^\eta}\\
+  &= \lim_{\eta \to 1^-} \frac{1}{r^2}\frac{\partial}{\partial r} r^2
+  \frac{\partial}{\partial r}r^{-\eta}\\
+  &= \lim_{\eta \to 1^-} \frac{1}{r^2} \frac{\partial}{\partial r} (-\eta r^2
+  \cdot r^{-\eta -1})\\
+  &= \lim_{\eta \to 1^-} \frac{-\eta}{r^2} \frac{\partial}{\partial r} 
+  r^{-\eta + 1}\\
+  &= \lim_{\eta \to 1^-} \frac{-\eta}{r^2}(1-\eta) r^{-\eta}\\
+  &= \lim_{\eta \to 1^-} -\eta(1-\eta)r^{-\eta - 2}\\  
+\end{align*}
+\begin{equation*}
+  \int d^3x -\eta(1 - \eta) r^{-\eta - 2}
+\end{equation*}
+\begin{align*}
+  &= -4\pi \eta(1 - \eta) \int_0^a dr \,r^{-\eta} \qquad a : \text{constant}\\
+  &= -4\pi \eta(1 - \eta) r^{-\eta + 1} \cdot \left. \frac{1}{1 - \eta} 
+  \right|_0^a\\
+  &= -4\pi \eta \cdot \left. r^{1 - \eta} \right| _0^a
+\end{align*}\\
+\noindent
+For $\eta < 1$, $(1 - \eta > 0)$ we get
+\begin{equation*}
+  = -4\pi \eta \cdot a^{1 - \eta}
+\end{equation*}
+\noindent
+Then,
+\begin{equation*}
+  \int d^3x \lim_{\eta \to 1^-} - \eta(1-\eta) r^{-\eta-2}
+\end{equation*}
+\begin{align*}
+  &= \lim_{\eta \to 1^-} \int d^3x - \eta(1-\eta)r^{-\eta-2}\\
+  &= \lim_{\eta \to 1^-} -4\pi \eta \cdot a^{1-\eta}\\
+  &= -4\pi
+\end{align*}\\
+\noindent
+If $\nabla^2G = -4\pi \delta^3 (\textbf{x})$, integrating both sides gives 
+$-4\pi$.\\ 
+Also,
+\begin{equation*}
+  \nabla^2G (\textbf{x}) = \lim_{\eta \to 1^-} - \eta(1-\eta) r^{-\eta-2} = 0
+\end{equation*} 
+unless r = 0.\\
+
+\noindent
+Therefore, we conclude
+\begin{equation*}
+  G(\textbf{x}) = \lim_{\eta \to 1^-} \frac{1}{r^\eta} = \frac{1}{r}
+  = \frac{1}{|\textbf{x}|}
+\end{equation*}
+is the green function.\\
+
+\noindent
+Now, shifting the coordinates by $\mathbf{x'}$ gives
+\begin{equation*}
+  G(\textbf{x} - \textbf{x}') = \frac{1}{|\textbf{x} - \textbf{x}'|}
+\end{equation*}\\
+
+\noindent
+2)\\
+a)Spherical ball\\
+Inside:
+\begin{equation*}
+  \rho = \frac{Q}{\frac{4}{3} \pi R^3} = \frac{3Q}{4\pi R^3}
+\end{equation*}\\
+For a gaussian surface of sphere with radius $r<R$,
+\begin{equation*}
+  \oint \textbf{E} \cdot d \textbf{A} = E \cdot 4\pi r^2 = \frac{4}{3} \pi r^3
+  \cdot \frac{3Q}{4\pi R^3} = \frac{Q}{\varepsilon_0} \frac{r^3}{R^3}
+\end{equation*}
+
+\begin{equation*}  
+  \therefore \textbf{E}_{inside} = \frac{Qr}{4\pi \varepsilon_0 R^3} \cdot
+  \hat{r}
+\end{equation*}\\
+\noindent
+Outside:
+\begin{equation*}
+  \textbf{E}_{out} = \frac{Q}{4\pi \varepsilon_0 r^2} \cdot \hat{r}
+\end{equation*}\\
+\noindent
+b)Bringing an infinitesimal spherical surface basically means we will assemble
+the ball layer by layer, by bringing an infinitesimal chance $dq$ and putting
+it uniformly over the surface.\\
+\noindent
+Energy necessary to create a thin layer of thickness $dr$ around a sphere of 
+radius $r$;
+\begin{equation*}
+  dW = dq \quad \phi(\textbf{x})
+\end{equation*}
+potential due to a sphere of radius $r$
+\begin{equation*}
+  = \left(4\pi r^2 dr \cdot \rho \right) \cdot 
+  \left(\frac{1}{4\pi \varepsilon_0} 
+  \frac{\frac{4}{3} \pi r^3 \rho}{r}\right)
+\end{equation*}
+since we can bring the layer in a spherically symmetric way.\\
+\noindent
+Energy necessary to assemble the whole ball is then
+\begin{align*}
+  W = \int dw &= \int_0^r \left(4\pi r^2 dr \rho \right) 
+  \left(\frac{1}{4\pi \varepsilon_0} \frac{\frac{4}{3}\pi r^3 \rho}{r} \right)
+  , \quad \rho = \frac{3Q}{4\pi R^3}\\
+  &= 4\pi \frac{3Q}{4\pi R^3} \cdot \frac{1}{4\pi \varepsilon_0} \cdot
+  \frac{4}{3}\pi \cdot \frac{3Q}{4\pi R^3} \int_0^R dr \cdot r^4\\
+  &= \frac{3Q^2}{4\pi \varepsilon_0 R^3} \cdot R^3 \cdot \frac{1}{5} R^5\\
+  &= \frac{1}{4\pi \varepsilon_0} \left(\frac{3Q^2}{5R} \right)
+\end{align*}\\
+\noindent
+c)
+\begin{equation*}
+  W = \frac{\varepsilon_0}{2} \int d^3x E^2(x)
+\end{equation*}
+Part (a) we solved for the electric field;
+\begin{equation*}
+  \textbf{E}_{out} = \frac{Q}{4\pi \varepsilon_0 r^2} \cdot \hat{r} 
+  \qquad \textbf{E}_{in} = \frac{Qr}{4\pi R^3} \cdot \hat{r}
+\end{equation*}
+Then,
+\begin{align*}
+  W &= \frac{\varepsilon_0}{2} \int d^3x E^2(x)\\
+  &= \frac{\varepsilon_0}{2} \int_0^R 4\pi r^2 dr \cdot 
+  \frac{Q^2 r^2}{\left(4\pi \varepsilon_0 \right)^2 R^6} \quad + \quad 
+  \frac{\varepsilon_0}{2}
+  \int_R^\infty 4\pi r^2 dr \frac{Q^2}{\left(4\pi \varepsilon_0 \right)^2 r^4}\\
+  &= \frac{\varepsilon_0}{2} \cdot \frac{4\pi Q^2}
+  {\left(4\pi \varepsilon_0 \right)^2 R^6} \int_0^R dr \cdot r^4 \quad + \quad
+  \frac{\varepsilon_0}{2} 4\pi \cdot \frac{Q^2}{(4\pi \varepsilon_0)^2}
+  \int_R^\infty \frac{dr}{r^2}\\
+  &= \frac{Q^2}{4\pi \varepsilon_0 \cdot 2R^6} \cdot \frac{1}{5} R^5 \quad +
+  \quad \frac{Q^2}{4\pi \varepsilon_0 \cdot 2} \cdot \frac{1}{R}\\
+  &= \frac{1}{4\pi \varepsilon_0} \cdot \frac{6Q^2}{10R}\\
+  &= \frac{1}{4\pi \varepsilon_0} \left(\frac{3Q^2}{5R}\right)
+\end{align*}\\
+\noindent
+3) 1.5
+\begin{equation*}
+  \phi = \frac{q}{4\pi \varepsilon_0} \frac{e^{-\alpha r}}{r} 
+  \left(1+ \frac{\alpha r}{2} \right)
+\end{equation*}
+\begin{equation*}
+  \textbf{E} = -\nabla \phi
+\end{equation*}
+\begin{align*}
+  \nabla \phi &= \frac{\partial \phi}{\partial r} \hat{r}\\
+  &= \frac{-q}{4\pi \varepsilon_0} \frac{e^{-\alpha r}}{r^2} 
+  \left(1 + \alpha r + \frac{1}{2} \alpha ^2 r^2 \right) \hat{r}
+\end{align*}
+\begin{align*}
+  \frac{d}{dr} \phi &= \frac{q}{4\pi \varepsilon_0} \frac{d}{dr} 
+  \left[\frac{e^{-\alpha r}}{r} \left(1+\frac{\alpha r}{2} \right)\right]\\
+  &= \frac{-q}{4\pi \varepsilon_0} \frac{e^{-\alpha r}}{r^2} 
+  \left(1+\alpha r + \frac{1}{2} \alpha ^2 r^2 \right)
+\end{align*}
+\begin{equation*}
+  -\frac{\rho_{(r)}}{\varepsilon_0} = \nabla ^2 \phi = 
+  \nabla \cdot \nabla \phi
+  = -\frac{q}{4\pi \varepsilon_0} \nabla \cdot
+  \left(\frac{e^{-\alpha r}}{r^2} \hat{r}+ \frac{\alpha e^{-\alpha r}}{r}
+  \hat{r} + \frac{1}{2} \alpha ^2 e^{-\alpha r} \hat{r} \right)
+\end{equation*}
+\begin{equation*}
+  \nabla \cdot \frac{e^{-\alpha r}}{r^2} \hat{r} = \boldsymbol{\nabla}
+  \left(e^{-\alpha r} \frac{\hat{r}}{r^2} \right) = e^{-\alpha r} \left(\nabla
+  \cdot \frac{\hat{r}}{r^2} \right) + \frac{\hat{r}}{r^2} \cdot \nabla e^{-\alpha r}
+\end{equation*}
+\begin{equation*}
+  = 4\pi \delta ^3 (\textbf{x}) \cdot e^{-\alpha r} 
+  - \frac{\alpha e ^{-\alpha r}}{r^2}
+\end{equation*}
+\begin{align*}
+  \nabla \cdot \left(\frac{\alpha e^{-\alpha r}}{r} \hat{r} \right) 
+  &= \frac{1}{r^2} \frac{d}{dr} \left(r^2 \frac{\alpha e^{-\alpha r}}{r} \right)
+  = \frac{1}{r^2} \frac{d}{dr} \left(\alpha re^{-\alpha r} \right)\\
+  &= \frac{1}{r^2} \alpha \left(e^{-\alpha r} -\alpha r e^{-\alpha r}\right)
+  = \frac{\alpha e^{-\alpha r}}{r^2} (1-\alpha r)
+\end{align*}
+\begin{equation*}
+  \nabla \cdot \left(\frac{1}{2} \alpha ^2 e^{-\alpha r} \hat{r}\right)
+  =\frac{1}{r^2} \frac{d}{dr} \left(r^2 \frac{1}{2} \alpha ^2 e^{-\alpha r}
+  \right)
+  = \frac{1}{r^2} \frac{1}{2} \alpha ^2 \left(2r e^{-\alpha r} -\alpha r^2
+  e^{-\alpha r}\right)
+\end{equation*}
+\begin{equation*}
+  \frac{\alpha ^2}{2} \frac{e^{-\alpha r}}{r^2} (2r-\alpha r^2)
+\end{equation*}
+\begin{align*}
+  \therefore \frac{\rho_{(r)}}{\varepsilon_0} &= -\frac{q}{4\pi \varepsilon_0}
+  \left[ \left(4\pi \delta ^3 (\textbf{x}) - \frac{\alpha}{r^2} \right) 
+  e^{-\alpha r} + \frac{\alpha e^ {-\alpha r}}{r^2} (1-\alpha r) + 
+  \frac{\alpha ^2}{2} \frac{e^{-\alpha r}}{r^2} \left(2r - \alpha r^2 \right)
+  \right]\\
+  &= -\frac{q}{4\pi \varepsilon_0} e^{-\alpha r} \left( 4\pi \delta ^3 
+  (\textbf{x}) -\frac{\alpha ^3}{2}  \right)\\
+  \therefore \rho (\textbf{x}) &= \frac{q}{4\pi} \cdot e^{-\alpha |\textbf{x}|}
+  \left(4\pi \delta ^3 (\textbf{x})-\frac{\alpha ^3}{2}\right)
+\end{align*}
+Let's check if the total charge is zero.
+\begin{align*}
+  Q_{tot} &= \int \rho (\textbf{x}) d^3 \textbf{x}\\
+  &= \int \frac{q}{4 \pi} e^{-\alpha |\textbf{x}|} \left(4 \pi \delta ^3 
+  (\textbf{x}) -\frac{\alpha ^3}{2}\right) d^3 \textbf{x} = q -\frac{q}{4 \pi} 
+  \frac{\alpha ^3}{2} \int_0^\infty dr 4 \pi r^2 e^{-\alpha r}\\
+\end{align*}
+\begin{align*}
+  \text{Since} \int_0^\infty dr r^2 e^{-\alpha r} &= \left. -\frac{1}{\alpha} r^2 
+   e^{-\alpha r} \right| _0^ \infty + \frac{1}{\alpha}2 \int_0^\infty r 
+   e^{-\alpha r} dr\\
+   &= \frac{2}{\alpha ^3},
+\end{align*}
+\begin{align*}
+  \text{We get,} \quad Q_{tot} &= q-\frac{q}{4 \pi} \frac{\alpha ^3}{2} \cdot \frac{2}{\alpha ^3}
+  \cdot 4\pi \\
+  &= 0  
+\end{align*}
+4)1.7 Show capacitance per unit length is given by
+\begin{align*}
+  &C \simeq \pi \varepsilon_0 \left(\ln \frac{d}{a}\right)^{-1}, 
+  \text{ where}\quad a = \sqrt{a_1 a_2}
+\end{align*}
+First, let's calculate the e-field around a cylindrical charge configuration.
+\begin{align*}
+  \oint \textbf{E} \cdot d\textbf{a} &= \frac{Q_{end}}{\varepsilon_0} \qquad 
+  \qquad  \textbf{E} \quad \text{radially outward.}  \\
+  E \cdot 2 \pi rl &= \frac{1}{\varepsilon_0} \cdot \rho \cdot \pi R^2 l, 
+  \text{ where } \rho \text{ is the charge density}\\
+  \therefore E &= \frac{1}{\varepsilon_0} \cdot \frac{\rho \pi R^2}{2 \pi r}
+  = \frac{\rho R^2}{2 \varepsilon_0 r}
+\end{align*}
+E-field due to the left cylinder is given by
+\begin{align*}
+  \textbf{E}_{\text{left}} = \frac{\left|\rho_\text{left} \cdot {a_1}^2\right|}
+  {2 \varepsilon_0 x} \hat{x}  \qquad \left(\rho_\text{left} >0\right)
+\end{align*}
+E-field due to the right cylinder is given by
+\begin{equation*}
+  \textbf{E}_{\text{right}} = -\frac{\rho_\text{right} \cdot {a_2}^2}
+  {2 \varepsilon_0 (d-x)} \hat{x} \qquad \left(\rho_{\text{right}} < 0\right)
+\end{equation*}
+, where L is the length of cylinders (approximately infinite).
+Then, the net e-field at P is given by
+\begin{align*}
+  \textbf{E}_p &= \frac{\frac{Q}{\pi {a_1}^2 L} \cdot {a_1}^2}{2 \varepsilon_0 x}
+  \hat{x} + \frac{\frac{Q}{\pi {a_2}^2 L} \cdot {a_2}^2}{2 \varepsilon_0 (d-x)}
+  \hat{x}\\
+  &= \frac{Q}{2 \pi \varepsilon_0 L} \cdot \frac{d}{x(d-x)} \hat{x} 
+\end{align*}
+The potential difference between the cylinders is
+\begin{align*}
+  V_{(x=a_1)} - V_{(x=d-a_2)} &= -\int_{d-a_2}^{a_1} 
+  \frac{Q}{2 \pi \varepsilon_0 L} \left(\frac{1}{x} + \frac{1}{d-x}\right) dx\\
+  &= - \frac{Q}{2 \pi \varepsilon_0 L} \left|\ln x -\ln |d-x|\right|_{d-a_2}^{a_1}\\
+  &= -\frac{Q}{2\pi \varepsilon_0 L} \cdot \ln \frac{a_1 a_2}{(d-a_1)(d-a_2)}
+\end{align*}
+Hence, capacitance per unit length is
+\begin{align*}
+  \frac{C}{L} = \frac{Q}{LV} &= \frac{Q}{-L\frac{Q}{2\pi\varepsilon_0 L} 
+  ln\frac{a_1 a_2}{(d-a_1)(d-a_2)}}\\
+  &= + 2\pi\varepsilon_0 \cdot {\left[\ln \frac{(d-a_1)(d-a_2)}{a_1 a_2} 
+  \right]}^{-1}\\
+  &\simeq 2\pi \varepsilon_0 \left[\ln \frac{d^2}{a_1 a_2}\right]^{-1}\\
+  &= \pi \varepsilon_0 \left[ln \frac{d}{a}\right]^{-1} 
+  \qquad a=\sqrt{a_1 a_2}    
+\end{align*}
+\textbf{Jackson 1.5} 
+\begin{equation*}
+  \phi = \frac{q}{4\pi \varepsilon_0} \frac{e^{-\alpha r}}{r}
+  \left(1+\frac{\alpha r}{2}\right)  
+\end{equation*}
+For $r>0$,
+\begin{align*}
+  \rho = -\varepsilon_0 \nabla^2 \phi &= -\frac{q}{4\pi} \frac{1}{r^2}
+  \frac{\partial}{\partial r} r^2 \frac{\partial}{\partial r}
+  \left[e^{-\alpha r}\left(\frac{1}{r}+\frac{\alpha}{2}\right)\right]\\
+  &= - \frac{q\alpha^3}{\delta \pi} e^{-\alpha r}
+\end{align*}
+For $r \approx 0$, we expand $\phi$;
+\begin{align*}
+  \frac{e^{-\alpha r}}{r} \left(1 + \frac{\alpha r}{2}\right)
+  &= e^{-\alpha r} \left(\frac{1}{r} + \frac{\alpha}{2}\right)\\
+  &= \left(1-\alpha r + \frac{1}{2!}(-\alpha r)^2 + \cdots \right)
+  \left(\frac{1}{r}+\frac{\alpha}{2}\right)\\
+  &= \frac{1}{r}+\frac{\alpha}{2} - \alpha - \frac{\alpha^2}{2}r 
+  + \frac{\alpha^2}{2}r + 0(r^2)\\
+  &\simeq \frac{1}{r}\\
+  \Rightarrow \phi &\simeq \frac{\alpha}{4\pi \varepsilon_0} \frac{1}{r}
+  \Rightarrow \text{a point charge at r = 0}
+\end{align*}
+Hence,
+\begin{equation*}
+  \rho = q \delta^3 (r) - \frac{q\alpha^3}{\delta\pi} e^{-\alpha r}
+\end{equation*}
+\textbf{Jackson 1.7}
+\begin{align*}
+  &\text{Around a cylinder, } \phi = - \frac{Q}{2\pi \varepsilon_0} \ln r 
+  \qquad Q \text{: charge per unit length}\\
+  &\text{from} \textbf{E} = \frac{Q}{2\pi \varepsilon_0} \frac{\hat{r}}{r}
+\end{align*}
+When two radii are small compared to the separation we may superpose
+the potentials;
+\begin{align*}
+  \phi_{(x)} &\approx -\frac{Q}{2\pi \varepsilon_0} 
+  \left[\ln x- \ln(d-x)\right]\\
+  &\text{for } a_1 \leq x \leq d-a_2  
+\end{align*}
+Note that this is NOT an exact result...
+\end{document}

@@ -1,0 +1,155 @@
+\documentclass[letterpage]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+\begin{document}
+\begin{align}
+  g(x)&=e^{-a(x-b)^2}\\
+  \frac{dg(x)}{dx}& = -2a(x-b)g(x)
+\end{align}
+Fourier transform pair is defined to be,
+\begin{equation}
+  G(w) = F\{g(x)\} = \int_{-\infty}^\infty g(x)e^{iwx}dx
+\end{equation}
+Then,
+\begin{equation}
+  \frac{dG(w)}{dw} = \int_{-\infty}^\infty ixg(x)e^{iwx}dx = F\{ixg(x)\}
+\end{equation}
+Taking the Fourier transform of both sides of (1), we get
+\begin{align}
+  -iwG(w) &= -2a \left(\frac{1}{i} \frac{dG(w)}{dw} - bG(w)\right)\\
+  \left(ib-\frac{w}{2a}\right) G(w) &= \frac{dG(w)}{dw} \Rightarrow
+  \frac{1}{G(w)} \frac{dG(w)}{dw} = ib-\frac{w}{2a}\\
+  \int_0^w \frac{1}{G(w)'} \frac{dG(w)'}{dw'} dw' &= 
+  \arrowvert\ln G(w')\arrowvert_0^w = \ln G(w) - \ln G(0) 
+  = \ln \frac{G(w)}{G(0)}\\
+  \int_0^w \left(ib-\frac{w}{za}\right)dw' &= \arrowvert ibw' - \frac{{w'}^2}{-4a}
+  \arrowvert_0^w = ibw-\frac{w^2}{4a}\\
+  G(0) = \int_{-\infty}^\infty g(x) dx &= \int_{-\infty}^\infty e^{-a(x-b)^2}
+  = \sqrt{\frac{\pi}{a}}
+\end{align}
+From (2), (3), and (4), we get
+\begin{align}
+  G(w) = G(0) e^{ibw-\frac{w^2}{4a}} &= \sqrt{\frac{\pi}{a}} \quad e^{ibw} 
+  e^{-\frac{w^2}{4a}}\\
+  \text{or} \qquad
+  \int_{-\infty}^\infty e^{-a(x-b)^2} e^{iqx}dx &= \sqrt{\frac{\pi}{a}}
+  \: e^{ibq} e^{-\frac{q^2}{4a}}
+\end{align}
+\begin{align}
+  g(x) &= F^{-1} \{G(w)\} = \frac{1}{2\pi} \int_{-\infty}^\infty 
+  G(w)e^{-iwx}dw\\
+  \text{and} \qquad \frac{dg(x)}{dx} &= \frac{1}{2\pi} \int_{-\infty}^\infty
+  (-iw)G(w)e^{-iwx}dw\\
+  &=F^{-1} \left\{-iwG(w)\right\}\\
+  &\Rightarrow F\left\{\frac{dg(x)}{dx} \right\} = -(iwG(w))
+\end{align}
+\\
+\begin{equation*}
+  u(x) = 
+    \begin{cases}
+    -\frac{A}{\lambda_r - X_0} \left(x+\frac{\lambda_r}{2}\right) 
+     &\text{ for } 
+    -\frac{\lambda_r}{2} \leq x < -\frac{x_0}{2}\\
+    \: \frac{A}{x_0}x &\text{ for } 
+    -\frac{x_0}{2} \leq x \leq \frac{x_0}{2}\\
+    -\frac{A}{\lambda_r-X_0} \left(x-\frac{\lambda_r}{2}\right)
+    &\text{ for } 
+   \frac{x_0}{2} < x \leq \frac{\lambda_r}{2}
+    \end{cases}
+\end{equation*}
+\begin{align}
+  Fc(\textbf{q}) &= \int_{-\frac{\lambda_r}{2}}^{\frac{\lambda_r}{2}}dx
+  \int_{-\frac{D}{2}}^\frac{D}{2} dz \: \delta\left(z-u(x)\right)
+  e^{iq_zZ} e^{iq_xX} \\
+  &= \int_{\frac{-\lambda_r}{2}}^{\frac{\lambda_r}{2}} dx \: e^{iq_zu(x)}
+  e^{iq_xX}
+\end{align}
+\begin{align}
+  \int_{-\frac{\lambda_r}{2}}^{-\frac{x_0}{2}} dx \: e^{iq_xx} e^{iq_zu(x)}
+  &= -\int_{\frac{\lambda_r}{2}}^{\frac{x_0}{2}} 
+  dy \: e^{-iq_xy}e^{iq_zu(-y)}\\
+  &= \int_{\frac{x_0}{2}}^{\frac{\lambda_r}{2}} dx \: e^{-iq_xx} 
+  e^{iq_z\frac{A}{\lambda_r-x_0}\left(x-\frac{\lambda_r}{2}\right)}\\
+  &= \int_{\frac{x_0}{2}}^{\frac{\lambda_r}{2}}dx \: 
+  e^{-i\left[q_xx - q_z \frac{A}{\lambda_r-x_0}
+  \left(x-\frac{\lambda_r}{2}\right)\right]}
+\end{align}
+\begin{align}
+  \int_{\frac{x_0}{2}}^{\frac{\lambda_r}{2}} dx \: e^{iq_xx} e^{iq_zu(x)}
+  = \int_{\frac{x_0}{2}}^{\frac{\lambda_r}{2}} dx \: 
+  e^{i\left[q_xx-q_z\frac{A}{\lambda_r-x_0}
+  \left(x-\frac{\lambda_r}{2}\right)\right]}
+\end{align}
+So,
+\begin{equation}
+  \int_{-\frac{\lambda_r}{2}}^{-\frac{x_0}{2}} dx \:
+  e^{i{\left[q_xx+q_zu(x)\right]}}
+  + \int_{\frac{x_0}{2}}^{\frac{\lambda_r}{2}} dx \: 
+  e^{i\left[q_xx+q_zu(x)\right]}
+\end{equation}
+
+\begin{align}
+  &= 2\int_{\frac{x_0}{2}}^{\frac{\lambda_r}{2}}   
+     \cos\left[\left(q_x-q_z\frac{A}{\lambda_r-x_0}\right)x
+     + q_z\frac{A}{\lambda_r-x_0}\frac{\lambda_r}{2} \right] \\
+  &= \frac{2}{q_x-q_z\frac{A}{\lambda_r-x_0}} 
+     \left\{\sin\left[\left(q_x-q_z\frac{A}{\lambda_r-x_0}\right)\frac{\lambda_r}{2}
+     +q_z\frac{A}{\lambda_r-x_0}\frac{\lambda_r}{2} \right] \\
+  & -\sin\left[\left(q_x-q_z\frac{A}{\lambda_r-x_0}\right)
+    \frac{x_0}{2}+q_z \frac{A}{\lambda_r-x_0 \frac{\lambda_r}{2}} \right]
+    \right\}
+\end{align}
+\begin{equation}
+  \text{Using} \qquad sin\:u-sin\:v = 2cos \left(\frac{u+v}{2} 
+  \:sin\frac{u-v}{2}\right),
+\end{equation}
+\begin{align}
+  =&\frac{4}{q_x-q_z\frac{A}{\lambda_r-x_0}} 
+  -cos\left(\frac{1}{2}\left[\frac{1}{2}q_x(\lambda_r + x_0)
+  -q_z \frac{A}{\lambda_r-X_0}\frac{x_0-\lambda_r}{2} \right]\right)\\
+  & \cdot sin\left(\frac{1}{2}\left[\frac{1}{2}q_x(\lambda_r-x_0) 
+  + q_z \frac{A}{\lambda_r-x_0} \frac{x_0-\lambda_r}{2}\right] \right)\\
+  =& \frac{4(\lambda_r-x_0)}{q_x(\lambda_r-x_0)-q_zA}
+  \: cos\left[\frac{1}{2} \left(\frac{1}{2}q_x (\lambda_r + x_0)
+  + \frac{1}{2} q_zA \right)\right]\\
+  & \cdot sin \frac{1}{2} \left(\frac{1}{2}q_x(\lambda_r-x_0)
+  -\frac{1}{2}q_zA\right)
+\end{align}
+\begin{align}
+  w &= \frac{1}{2} \left(q_xx_0 + q_z A \right)\\
+  &= \frac{2(\lambda_r-x_0)}{\frac{1}{2}q_x \lambda_r - \frac{1}{2}q_x x_0
+  -\frac{1}{2} q_z A} \: cos \frac{1}{2} \left(w + \frac{1}{2}q_x 
+  \lambda_r \right) \: sin \frac{1}{2} \left(\frac{1}{2} q_x \lambda_r-w \right)\\
+  &= \frac{(\lambda_r-x_0)}{\frac{1}{2}q_x \lambda_r - w} \: cos \frac{1}{2}
+  \left(w + \frac{1}{2}q_x \lambda_r \right) 
+  \frac{sin\left(\frac{1}{2}q_x \lambda_r - w \right)}
+  {cos\frac{1}{2}\left(\frac{1}{2}q_x \lambda_r -w \right)}\\
+  &= (\lambda_r - x_0) \frac{cos\frac{1}{2}\left(\frac{1}{2}q_x \lambda_r
+  + w \right)}{cos\frac{1}{2} \left(\frac{1}{2} q_x \lambda_r - w \right)}
+  \: \frac{sin \left(\frac{1}{2}q_x \lambda_r - w \right)}{\frac{1}{2}
+  q_x \lambda_r - w}
+\end{align}
+\begin{equation}
+  \int_{-\frac{x_0}{2}}^{\frac{x_0}{2}} dx \: e^{iq_z \frac{A}{x_0}x}
+  e^{iqx} = \int_{-\frac{x_0}{2}}^{\frac{x_0}{2}} dx \: 
+  e^{i\left(\frac{q_zA}{x_0} + q_x \right)x}
+\end{equation}
+\begin{align}
+  &= 2 \int_{0}^{\frac{x_0}{2}} dx \:cos \left(\frac{q_zA}{x_0} + q_x \right)x\\
+  &= \frac{2}{\frac{q_zA}{x_0} + q_x} \: 
+  sin \left. \left(\frac{q_zA}{x_0} + q_x \right) x \right|_{0}^{\frac{x_0}{2}}\\
+  &= \frac{2}{\frac{q_zA}{x_0}+q_x} \: sin \left(\frac{q_zA}{x_0}+q_x \right)
+  \frac{x_0}{2}\\
+  &= \frac{2x_0}{q_zA + x_0 q_x} \: sin \frac{1}{2} (q_zA + q_z x_0)\\
+  &= x_0 \: \frac{sin\frac{1}{2}\left(q_zA + q_x x_0 \right)}
+  {\frac{1}{2}\left(q_zA + q_x x_0 \right)}\\
+  &= x_0 \frac{sinw}{w}\\
+  \therefore & \: F_c(\textbf{q}) = x_0 \frac{sin \:w}{w} + (\lambda_r - x_0)
+  \frac{cos\frac{1}{2}\left(\frac{1}{2} q_x \lambda_r + w\right)}
+  {cos\frac{1}{2} \left(\frac{1}{2}q_x \lambda_r - w \right)}
+  \frac{sin\left(\frac{1}{2}q_x \lambda_r - w \right)}{\frac{1}{2}q_x \lambda_r
+  - w}
+\end{align}
+\end{document}
