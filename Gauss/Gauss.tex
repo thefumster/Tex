@@ -1,7 +1,6 @@
 \documentclass[letterpage]{article}
-\usepackage{amsmath}
-\usepackage{amssymb}
 
+\input{../common_preambles}
 
 \begin{document}
 \begin{align}
@@ -47,17 +46,18 @@ From (2), (3), and (4), we get
 \end{align}
 \\
 \begin{equation*}
-  u(x) = 
-    \begin{cases}
-    -\frac{A}{\lambda_r - X_0} \left(x+\frac{\lambda_r}{2}\right) 
-     &\text{ for } 
-    -\frac{\lambda_r}{2} \leq x < -\frac{x_0}{2}\\
-    \: \frac{A}{x_0}x &\text{ for } 
-    -\frac{x_0}{2} \leq x \leq \frac{x_0}{2}\\
+  u(x) = \left\{
+    \begin{array}{ccc}
+    -\frac{A}{\lambda_r-X_0}\left(x+\frac{\lambda_r}{2}\right) 
+      & \text{for} 
+      & -\frac{\lambda_r}{2} \leq x < -\frac{x_0}{2} \\
+    \frac{A}{x_0}x 
+      & \text{for} 
+      & -\frac{x_0}{2} \leq x \leq \frac{x_0}{2} \\
     -\frac{A}{\lambda_r-X_0} \left(x-\frac{\lambda_r}{2}\right)
-    &\text{ for } 
-   \frac{x_0}{2} < x \leq \frac{\lambda_r}{2}
-    \end{cases}
+      & \text{for} 
+      & \frac{x_0}{2} < x \leq \frac{\lambda_r}{2}
+    \end{array} \right.
 \end{equation*}
 \begin{align}
   Fc(\textbf{q}) &= \int_{-\frac{\lambda_r}{2}}^{\frac{\lambda_r}{2}}dx
@@ -92,33 +92,21 @@ So,
 
 \begin{align}
   &= 2\int_{\frac{x_0}{2}}^{\frac{\lambda_r}{2}}   
-     \cos\left[\left(q_x-q_z\frac{A}{\lambda_r-x_0}\right)x
-     + q_z\frac{A}{\lambda_r-x_0}\frac{\lambda_r}{2} \right] \\
+     \cos\bracks{\pars{q_x-q_z\frac{A}{\lambda_r-x_0}}x
+     + q_z\frac{A}{\lambda_r-x_0}\frac{\lambda_r}{2}} \\
   &= \frac{2}{q_x-q_z\frac{A}{\lambda_r-x_0}} 
-     \left\{\sin\left[\left(q_x-q_z\frac{A}{\lambda_r-x_0}\right)\frac{\lambda_r}{2}
-     +q_z\frac{A}{\lambda_r-x_0}\frac{\lambda_r}{2} \right] \\
-  & -\sin\left[\left(q_x-q_z\frac{A}{\lambda_r-x_0}\right)
-    \frac{x_0}{2}+q_z \frac{A}{\lambda_r-x_0 \frac{\lambda_r}{2}} \right]
-    \right\}
+     \braces{}
 \end{align}
-\begin{equation}
-  \text{Using} \qquad sin\:u-sin\:v = 2cos \left(\frac{u+v}{2} 
-  \:sin\frac{u-v}{2}\right),
-\end{equation}
+Using $\sin u-\sin v = 2\cos[(u+v)/2]\sin[(u-v)/2]$
 \begin{align}
-  =&\frac{4}{q_x-q_z\frac{A}{\lambda_r-x_0}} 
-  -cos\left(\frac{1}{2}\left[\frac{1}{2}q_x(\lambda_r + x_0)
-  -q_z \frac{A}{\lambda_r-X_0}\frac{x_0-\lambda_r}{2} \right]\right)\\
-  & \cdot sin\left(\frac{1}{2}\left[\frac{1}{2}q_x(\lambda_r-x_0) 
-  + q_z \frac{A}{\lambda_r-x_0} \frac{x_0-\lambda_r}{2}\right] \right)\\
   =& \frac{4(\lambda_r-x_0)}{q_x(\lambda_r-x_0)-q_zA}
   \: cos\left[\frac{1}{2} \left(\frac{1}{2}q_x (\lambda_r + x_0)
   + \frac{1}{2} q_zA \right)\right]\\
   & \cdot sin \frac{1}{2} \left(\frac{1}{2}q_x(\lambda_r-x_0)
   -\frac{1}{2}q_zA\right)
 \end{align}
+Defining $w = \frac{1}{2} \left(q_xx_0 + q_z A \right)$, we get
 \begin{align}
-  w &= \frac{1}{2} \left(q_xx_0 + q_z A \right)\\
   &= \frac{2(\lambda_r-x_0)}{\frac{1}{2}q_x \lambda_r - \frac{1}{2}q_x x_0
   -\frac{1}{2} q_z A} \: cos \frac{1}{2} \left(w + \frac{1}{2}q_x 
   \lambda_r \right) \: sin \frac{1}{2} \left(\frac{1}{2} q_x \lambda_r-w \right)\\
@@ -138,8 +126,8 @@ So,
 \end{equation}
 \begin{align}
   &= 2 \int_{0}^{\frac{x_0}{2}} dx \:cos \left(\frac{q_zA}{x_0} + q_x \right)x\\
-  &= \frac{2}{\frac{q_zA}{x_0} + q_x} \: 
-  sin \left. \left(\frac{q_zA}{x_0} + q_x \right) x \right|_{0}^{\frac{x_0}{2}}\\
+  &= \frac{2}{\frac{q_zA}{x_0} + q_x}
+    \sin\left.\left(\frac{q_zA}{x_0} + q_x \right) x \right|_{0}^{\frac{x_0}{2}}\\
   &= \frac{2}{\frac{q_zA}{x_0}+q_x} \: sin \left(\frac{q_zA}{x_0}+q_x \right)
   \frac{x_0}{2}\\
   &= \frac{2x_0}{q_zA + x_0 q_x} \: sin \frac{1}{2} (q_zA + q_z x_0)\\
@@ -152,4 +140,10 @@ So,
   \frac{sin\left(\frac{1}{2}q_x \lambda_r - w \right)}{\frac{1}{2}q_x \lambda_r
   - w}
 \end{align}
+
+\begin{equation}
+  \pars{\frac{c}{d}}
+  \braces{\frac{x}{y}}
+  \bracks{\frac{a}{b}}
+\end{equation}
 \end{document}
